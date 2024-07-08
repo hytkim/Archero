@@ -80,14 +80,13 @@ public class JoyStickMovement : MonoBehaviour
 
         float f_stickDistance = Vector3.Distance(DragPosition, vec_stickFirstPosition);
 
-        if (f_stickDistance < (f_stckRadius * 0.55f))
+        if (f_stickDistance < (f_stckRadius * 0.2f))
         {
             obj_smallStick.transform.position = vec_stickFirstPosition + vec_stickNowPosition * f_stickDistance;
-
         }
         else
         {
-            obj_smallStick.transform.position = vec_stickFirstPosition + vec_stickNowPosition * (f_stckRadius*0.55f);
+            obj_smallStick.transform.position = vec_stickFirstPosition + vec_stickNowPosition * (f_stckRadius*0.2f);
         }
     }
 
