@@ -5,6 +5,28 @@ using UnityEngine.UI;
 
 public class PlayerHpBar : MonoBehaviour
 {
+    #region singletone
+    private static PlayerHpBar single;
+    public static PlayerHpBar Single
+    {
+        get
+        {
+            if (single == null)
+            {
+                single = FindObjectOfType<PlayerHpBar>();
+
+                if (single == null)
+                {
+                    var instanceContainer = new GameObject("PlayerHpBar");
+                    single = instanceContainer.AddComponent<PlayerHpBar>();
+                }
+            }
+            return single;
+        }
+    }
+    #endregion
+
+
     public Transform player;
     public Slider hpBar;
     public float maxHp;

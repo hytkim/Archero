@@ -18,7 +18,7 @@ public class JoyStickMovement : MonoBehaviour
 
                 if (single == null)
                 {
-                    var instanceContainer = new GameObject( "JoyStickMovement" );
+                    var instanceContainer = new GameObject("JoyStickMovement");
                     single = instanceContainer.AddComponent<JoyStickMovement>();
                 }
             }
@@ -66,7 +66,7 @@ public class JoyStickMovement : MonoBehaviour
         }
 
         isPlayerMoving = true;
-        PlayerTargeting.Single.getATarget = false;
+        PlayerTargeting.Instance.getATarget = false;
     }
 
     public void Drag( BaseEventData _baseEventData)

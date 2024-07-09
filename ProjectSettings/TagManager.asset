@@ -9,6 +9,7 @@ TagManager:
   - NextRoom
   - HpBooster
   - Potato
+  - MeleeAtk
   layers:
   - Default
   - TransparentFX

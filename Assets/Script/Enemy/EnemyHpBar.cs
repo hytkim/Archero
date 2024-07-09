@@ -33,7 +33,7 @@ public class EnemyHpBar : MonoBehaviour
 
     public void Dmg()
     {
-        curHp -= 300f;
+        curHp -= 250;
         Invoke("BackHpFun", 0.5f);
     }
     void BackHpFun()

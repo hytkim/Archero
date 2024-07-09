@@ -16,6 +16,7 @@ public class RoomCondition : MonoBehaviour
             if (MonsterListInRoom.Count <= 0 && !isClearRoom)
             {
                 isClearRoom = true;
+                PlayerMovement.Single.anim.SetBool("Atk", false);
                 Debug.Log("Clear");
             }
         }
@@ -26,8 +27,8 @@ public class RoomCondition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInThisRoom = true;
-            PlayerTargeting.Single.MonsterList = new List<GameObject>( MonsterListInRoom );
-            Debug.Log("Enter New Room! Mob Cound :"+ PlayerTargeting.Single.MonsterList.Count);
+            PlayerTargeting.Instance.MonsterList = new List<GameObject>( MonsterListInRoom );
+            Debug.Log("Enter New Room! Mob Cound :"+ PlayerTargeting.Instance.MonsterList.Count);
         }
         if (other.CompareTag("Monster"))
         {
@@ -40,7 +41,7 @@ public class RoomCondition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInThisRoom= false;
-            PlayerTargeting.Single.MonsterList.Clear();
+            PlayerTargeting.Instance.MonsterList.Clear();
             Debug.Log("Player Exit!");
         }
         if (other.CompareTag("Monster"))

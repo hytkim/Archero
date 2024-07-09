@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveSpeed == 0)
         {
-            moveSpeed = 15f;
+            moveSpeed = 10f;
         }
     }
 
@@ -81,8 +81,28 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.transform.CompareTag("NextRoom"))
         {
-            Debug.Log("Run Next Room()");
+            Debug.Log(" Get Next Room ");
             StageMgr.Single.NextStage();
         }
+
+        if (other.transform.CompareTag("HpBooster"))
+        {
+            PlayerHpBar.Single.GetHpBoost();
+            Destroy(other.gameObject);
+        }
+
+        if (other.transform.CompareTag("MeleeAtk"))
+        {
+            other.transform.parent.GetComponent<EnemyDuck>().meleeAtkArea.SetActive(false);
+            PlayerHpBar.Single.curHp -= other.transform.parent.GetComponent<EnemyDuck>().damage * 2f;
+
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dmg"))
+            {
+                anim.SetTrigger("Dmg");
+                Instantiate(EffectSet.Single.PlayerDmgEffect, PlayerTargeting.Instance.AttackPoint.position, Quaternion.Euler(90, 0, 0));
+            }
+
+        }
+
     }
 }
