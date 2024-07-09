@@ -23,11 +23,6 @@ public class PlayerWeapon : MonoBehaviour
         Debug.Log("Name : "+collision.transform.name);
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Monster"))
         {
-            if (collision.transform.CompareTag("Monster"))
-            {
-                collision.gameObject.GetComponent<Test>().EnemyDie();
-            }
-
             Debug.Log("Name : " + collision.transform.name);
             GetComponent <Rigidbody>().velocity = Vector3.zero;
             Destroy(gameObject, 0.2f);
