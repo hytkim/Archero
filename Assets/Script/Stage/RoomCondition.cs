@@ -5,6 +5,26 @@ using UnityEngine;
 
 public class RoomCondition : MonoBehaviour
 {
+    #region singletone
+    private static RoomCondition single;
+    public static RoomCondition Single
+    {
+        get
+        {
+            if (single == null)
+            {
+                single = FindObjectOfType<RoomCondition>();
+
+                if (single == null)
+                {
+                    var instanceContainer = new GameObject("RoomCondition");
+                    single = instanceContainer.AddComponent<RoomCondition>();
+                }
+            }
+            return single;
+        }
+    }
+    #endregion
     public List<GameObject> MonsterListInRoom = new();
     public bool playerInThisRoom = false;
     public bool isClearRoom = false;
@@ -16,7 +36,6 @@ public class RoomCondition : MonoBehaviour
             if (MonsterListInRoom.Count <= 0 && !isClearRoom)
             {
                 isClearRoom = true;
-                PlayerMovement.Single.anim.SetBool("Atk", false);
                 Debug.Log("Clear");
             }
         }

@@ -56,11 +56,25 @@ public class EnemyDuck : EnemyMeleeFSM
         if (currentHp <= 0)
         //if ( enemyCanvasGo.GetComponent<EnemyHpBar> ( ).currentHp <= 0 )
         {
+            Debug.Log("Im Die : "+gameObject.name);
             nvAgent.isStopped = true;
 
             rb.gameObject.SetActive(false);
+            
+
             PlayerTargeting.Instance.MonsterList.Remove(transform.parent.gameObject);
             PlayerTargeting.Instance.TargetIndex = -1;
+
+            if (RoomCondition.Single.MonsterListInRoom.Count > 0)
+            {
+                RoomCondition.Single.MonsterListInRoom.Remove(RoomCondition.Single.MonsterListInRoom[PlayerTargeting.Instance.TargetIndex]);
+            }
+            else
+            {
+                Debug.Log("Clear");
+            }
+            
+
             Destroy(transform.parent.gameObject);
             return;
         }

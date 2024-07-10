@@ -133,12 +133,13 @@ public class PlayerTargeting : MonoBehaviour
         if (TargetIndex == -1 || MonsterList.Count == 0)  // 추가 
         {
             PlayerMovement.Single.anim.SetBool("Attack", false);
+            //Debug.Log("Atarget False");
             return;
         }
         if (getATarget && !JoyStickMovement.Single.isPlayerMoving && MonsterList.Count != 0)
         {
             //            Debug.Log ( "lookat : " + MonsterList[TargetIndex].transform.GetChild ( 0 ) );  // 변경
-            transform.LookAt(MonsterList[TargetIndex].transform.GetChild(0));     // 변경
+            transform.LookAt(MonsterList[TargetIndex].transform.GetChild(0));// 변경
 
             if (PlayerMovement.Single.anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
