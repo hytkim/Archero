@@ -60,8 +60,8 @@ public class JoyStickMovement : MonoBehaviour
         if (!PlayerMovement.Single.anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
         {
             Debug.Log ("Joy Walk!" );
-            PlayerMovement.Single.anim.SetBool("Idel", false);
-            PlayerMovement.Single.anim.SetBool("Atk", false);
+            PlayerMovement.Single.anim.SetBool("Idle", false);
+            PlayerMovement.Single.anim.SetBool("Attack", false);
             PlayerMovement.Single.anim.SetBool("Walk", true);
         }
 
@@ -102,8 +102,8 @@ public class JoyStickMovement : MonoBehaviour
         {
             Debug.Log("Joy Idel!");
             PlayerMovement.Single.anim.SetBool("Walk", false);
-            PlayerMovement.Single.anim.SetBool("Atk", false);
-            PlayerMovement.Single.anim.SetBool("Idel", true);
+            PlayerMovement.Single.anim.SetBool("Attack", false);
+            PlayerMovement.Single.anim.SetBool("Idle", true);
         }
 
         isPlayerMoving = false;

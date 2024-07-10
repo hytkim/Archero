@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,10 +36,12 @@ public class PlayerHpBar : MonoBehaviour
     public GameObject HpLineFolder;
     float unitHp = 200f;
 
+    public TextMeshProUGUI txtHp;
     private void Update()
     {
         transform.position = player.position;
         hpBar.value = curHp / maxHp;
+        txtHp.text = curHp.ToString();
     }
 
     public void GetHpBoost()
