@@ -65,14 +65,14 @@ public class EnemyDuck : EnemyMeleeFSM
             PlayerTargeting.Instance.MonsterList.Remove(transform.parent.gameObject);
             PlayerTargeting.Instance.TargetIndex = -1;
 
-            if (RoomCondition.Single.MonsterListInRoom.Count > 0)
+            /*if (RoomCondition.Single.MonsterListInRoom.Count > 0)
             {
                 RoomCondition.Single.MonsterListInRoom.Remove(RoomCondition.Single.MonsterListInRoom[PlayerTargeting.Instance.TargetIndex]);
             }
             else
             {
                 Debug.Log("Clear");
-            }
+            }*/
             
 
             Destroy(transform.parent.gameObject);
