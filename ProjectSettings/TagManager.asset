@@ -10,6 +10,7 @@ TagManager:
   - HpBooster
   - Potato
   - MeleeAtk
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - Room
   - Potato
-  - 
+  - Wall
   - 
   - 
   - 
