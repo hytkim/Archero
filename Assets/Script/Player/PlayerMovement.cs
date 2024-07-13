@@ -93,15 +93,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.transform.CompareTag("MeleeAtk"))
         {
-            Debug.Log("is MeleeAtk Run");
+            //Debug.Log("is MeleeAtk Run");
             other.transform.parent.GetComponent<EnemyDuck>().meleeAtkArea.SetActive(false);
             PlayerHpBar.Single.curHp -= other.transform.parent.GetComponent<EnemyDuck>().damage * 2f;
-            Debug.Log("EnemyDuck dmg : "+ other.transform.parent.GetComponent<EnemyDuck>().damage * 2f);
+            //Debug.Log("EnemyDuck dmg : "+ other.transform.parent.GetComponent<EnemyDuck>().damage * 2f);
 
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dmg"))
             {
+                //Debug.Log("Dmg Anime is Run");
                 anim.SetTrigger("Dmg");
-                Debug.Log("Dmg Anime is Run");
                 Instantiate(EffectSet.Single.PlayerDmgEffect, PlayerTargeting.Instance.AttackPoint.position, Quaternion.Euler(90, 0, 0));
             }
 
