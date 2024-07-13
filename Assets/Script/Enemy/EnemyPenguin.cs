@@ -51,7 +51,7 @@ public class EnemyPenguin : MonoBehaviour
             yield return null;
             if (!lookAtPlayer) break; // 이 위치 Line 지워짐
 
-            Debug.Log(" Set Player.transform.position ");
+            //Debug.Log(" Set Player.transform.position ");
             transform.LookAt(Player.transform.position);
             DangerMarkerShoot();
         }
@@ -67,10 +67,10 @@ public class EnemyPenguin : MonoBehaviour
         {
             Physics.Raycast(NewPosition, NewDir, out RaycastHit hit, 30f, layerMask);
 
-            Debug.Log(" name : " + hit.transform.name + " position : " + hit.point);
+            //Debug.Log(" name : " + hit.transform.name + " position : " + hit.point);
 
             lr.positionCount++;
-            Debug.Log(" position : " + hit.point);
+            //Debug.Log(" position : " + hit.point);
             lr.SetPosition(i, hit.point);
 
             NewPosition = hit.point;
@@ -81,10 +81,10 @@ public class EnemyPenguin : MonoBehaviour
     public void DangerMarkerDeactive()
     {
         lookAtPlayer = false;
-        Debug.Log(" lr.positionCount : " + lr.positionCount);
+        //Debug.Log(" lr.positionCount : " + lr.positionCount);
         for (int i = 0; i < lr.positionCount; i++)
         {
-            Debug.Log(" Set Vector3.zero");
+            //Debug.Log(" Set Vector3.zero");
             lr.SetPosition(i, Vector3.zero);
         }
         lr.positionCount = 0;

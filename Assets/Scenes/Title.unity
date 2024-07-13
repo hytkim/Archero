@@ -11392,7 +11392,7 @@ Transform:
   m_GameObject: {fileID: 392429349}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 3.5, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33349,7 +33349,7 @@ Transform:
   m_GameObject: {fileID: 1086329543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: -3.5, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49251,7 +49251,7 @@ MonoBehaviour:
   hpSlider: {fileID: 653581986}
   backHpSlider: {fileID: 1639845598}
   backHpHit: 0
-  enemy: {fileID: 0}
+  enemy: {fileID: 1402974009}
   maxHp: 1000
   curHp: 1000
 --- !u!114 &1655230573
@@ -58069,7 +58069,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   BoltGenPosition: {fileID: 2097096017}
-  EnemyBolt: {fileID: 5917132139755370828, guid: 4b57cb3a4db633b43ae6d29ecfbf2d5e, type: 3}
+  EnemyBolt: {fileID: 7911237956935039001, guid: 2673b722953801c4ea61f88c955f24c1, type: 3}
   lookAtPlayer: 1
 --- !u!120 &1837415425
 LineRenderer:

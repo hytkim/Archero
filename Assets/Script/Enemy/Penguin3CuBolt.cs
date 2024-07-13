@@ -9,11 +9,13 @@ public class Penguin3CuBolt : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         NewDir = transform.up;
-        rb.velocity = NewDir * -10f;
+        rb.velocity = NewDir * -50f;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(" ###### Penguin 3Cu #######");
+
         Debug.Log(" Collision Name : " + collision.transform.name);
         if (collision.transform.CompareTag("Wall"))
         {
@@ -22,7 +24,7 @@ public class Penguin3CuBolt : MonoBehaviour
             {
                 Debug.Log("hit wall");
                 NewDir = Vector3.Reflect(NewDir, collision.contacts[0].normal);
-                rb.velocity = NewDir * -10f;
+                rb.velocity = NewDir * -50f;
             }
             else
             {
