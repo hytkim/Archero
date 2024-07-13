@@ -13,80 +13,80 @@ public class EnemyCat : MonoBehaviour
     float attackTime = 5f;
     float attackTimeCalc = 5f;
 
-    void Start ( )
+    void Start()
     {
-        Player = GameObject.FindGameObjectWithTag ( "Player" );
-        RoomConditionGO = transform.parent.transform.parent.gameObject.GetComponent<RoomCondition> ( );
-        LaserEffect.SetActive ( false );
-        StartCoroutine ( WaitPlayer ( ) );
-        StartCoroutine ( LaserOff ( ) );
+        Player = GameObject.FindGameObjectWithTag("Player");
+        RoomConditionGO = transform.parent.transform.parent.gameObject.GetComponent<RoomCondition>();
+        LaserEffect.SetActive(false);
+        StartCoroutine(WaitPlayer());
+        StartCoroutine(LaserOff());
     }
 
-    IEnumerator LaserOff ( )
+    IEnumerator LaserOff()
     {
-        while ( true )
+        while (true)
         {
             yield return null;
-            if ( LaserEffect.activeInHierarchy )
+            if (LaserEffect.activeInHierarchy)
             {
                 attackTimeCalc -= Time.deltaTime;
-                if ( attackTimeCalc <= 0 )
+                if (attackTimeCalc <= 0)
                 {
                     attackTimeCalc = attackTime;
-                    LaserEffect.SetActive ( false );
+                    LaserEffect.SetActive(false);
                 }
             }
         }
     }
 
-    IEnumerator WaitPlayer ( )
+    IEnumerator WaitPlayer()
     {
         yield return null;
 
-        while ( !RoomConditionGO.playerInThisRoom )
+        while (!RoomConditionGO.playerInThisRoom)
         {
-            yield return new WaitForSeconds ( 0.5f );
+            yield return new WaitForSeconds(0.5f);
         }
 
-        yield return new WaitForSeconds ( 6f );
+        yield return new WaitForSeconds(2f);
 
-        StartCoroutine ( SetTarget ( ) );
+        StartCoroutine(SetTarget());
 
-        yield return new WaitForSeconds ( 1.5f );
-        Shoot ( );
+        yield return new WaitForSeconds(1.5f);
+        Shoot();
 
-        StartCoroutine ( Targeting ( ) );
+        StartCoroutine(Targeting());
     }
 
-    IEnumerator SetTarget ( )
+    IEnumerator SetTarget()
     {
-        LaserEffect.SetActive ( true );
+        LaserEffect.SetActive(true);
 
-        while ( true )
+        while (true)
         {
             yield return null;
-            if ( !lookAtPlayer ) break; // 이 위치 Line 지워짐
-                                        //            Debug.Log ( " Set Player.transform.position " );
+            if (!lookAtPlayer) break; // 이 위치 Line 지워짐
+                                      //            Debug.Log ( " Set Player.transform.position " );
 
-            transform.LookAt ( Player.transform.position );
+            transform.LookAt(Player.transform.position);
         }
     }
 
-    IEnumerator Targeting ( )
+    IEnumerator Targeting()
     {
-        while ( true )
+        while (true)
         {
             yield return null;
-            if ( !LaserEffect.activeInHierarchy )
+            if (!LaserEffect.activeInHierarchy)
             {
                 break;
             }
-            Quaternion targetRotation = Quaternion.LookRotation ( Player.transform.position - transform.position );
-            transform.rotation = Quaternion.Slerp ( transform.rotation, targetRotation, 1 * Time.deltaTime );
+            Quaternion targetRotation = Quaternion.LookRotation(Player.transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1 * Time.deltaTime);
         }
     }
 
-    public void Shoot ( )
+    public void Shoot()
     {
         lookAtPlayer = false;
     }

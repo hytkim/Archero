@@ -7,31 +7,32 @@ public class LaserCat : MonoBehaviour
 
     LineRenderer lr;
 
-    void Start ( )
+    void Start()
     {
-        lr = Laser.GetComponent<LineRenderer> ( );
+        lr = Laser.GetComponent<LineRenderer>();
         lr.enabled = false;
-        HitEffect.SetActive ( false );
+        HitEffect.SetActive(false);
     }
 
-    void Update ( )
+    void Update()
     {
-        if ( lr.enabled )
+        if (lr.enabled)
         {
-            Physics.Raycast ( transform.position, transform.forward, out RaycastHit hit );
+            Physics.Raycast(transform.position, transform.forward, out RaycastHit hit);
 
-            if ( hit.transform.CompareTag ( "Player" ) || hit.transform.CompareTag ( "Wall" ) )
+            if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("Wall"))
             {
-                HitEffect.SetActive ( true );
+                HitEffect.SetActive(true);
                 HitEffect.transform.position = hit.point;
-                if ( hit.transform.CompareTag ( "Player" ) )
+                if (hit.transform.CompareTag("Player"))
                 {
+                    Debug.Log("Lager Atk Run");
                     PlayerHpBar.Single.curHp -= Time.deltaTime * 250f;// LaserDMG;
                 }
             }
             else
             {
-                HitEffect.SetActive ( false );
+                HitEffect.SetActive(false);
             }
         }
     }
