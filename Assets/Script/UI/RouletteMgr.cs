@@ -16,6 +16,7 @@ public class RouletteMgr : MonoBehaviour
     List<int> ResultIndexList = new List<int>();//당첨된 스킬의 인덱스를 저장할 리스트
     int ItemCnt = 6;//룰렛 위에 올라갈 총 스킬 갯수
 
+    public GameObject SLotMachine;
     private void Start()
     {
         //Set Random Skill Icon  1. 리스트에 데이터 등록
@@ -80,6 +81,14 @@ public class RouletteMgr : MonoBehaviour
         DisplayItemSlot[ItemCnt].sprite = DisplayItemSlot[closetIndex].sprite;
 
         Debug.Log(" LV UP Index : " + ResultIndexList[closetIndex]);
+
+        StartCoroutine(StartSlotMachine());
     }
 
+    IEnumerator StartSlotMachine()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("슬롯머신");
+        SLotMachine.SetActive(true);
+    }
 }
