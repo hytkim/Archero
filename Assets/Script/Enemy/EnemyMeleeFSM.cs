@@ -15,7 +15,8 @@ public class EnemyMeleeFSM : EnemyBase
     WaitForSeconds Delay500 = new WaitForSeconds(0.5f);
     WaitForSeconds Delay250 = new WaitForSeconds(0.25f);
 
-    protected void Start()
+    //protected void Start()
+    new protected void Start()
     {
         base.Start();
         parentRoom = transform.parent.transform.parent.gameObject;

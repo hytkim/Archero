@@ -14,7 +14,8 @@ public class EnemyDuck : EnemyMeleeFSM
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    void Start()
+    //void Start()
+    new void Start()
     {
         base.Start();
         attackCoolTime = 2f;
