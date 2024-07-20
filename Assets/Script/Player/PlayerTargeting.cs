@@ -74,7 +74,41 @@ public class PlayerTargeting : MonoBehaviour
     void Attack()
     {
         PlayerMovement.Single.anim.SetFloat("AttackSpeed", atkSpd);
-        Instantiate(PlayerBolt, AttackPoint.position, transform.rotation);
+        Instantiate(PlayerData.Instance.PlayerBolt[PlayerData.Instance.PlayerSkill[2]], AttackPoint.position, transform.rotation);
+
+        if (PlayerData.Instance.PlayerSkill[1] > 0)//멀티 샷 스킬이 활성화되어있으면 감자 한개 더 날아감
+        {
+            Invoke("MultiShot",0.2f);
+        }
+
+        if (PlayerData.Instance.PlayerSkill[3] > 0) // 사선화살 스킬이 활성화된(0이 아닌 1이된) 상태일 때
+        {
+            GameObject PotatoL =
+                Instantiate(PlayerData.Instance.PlayerBolt[PlayerData.Instance.PlayerSkill[3] - 1], AttackPoint.position, transform.rotation);
+            PotatoL.transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, -45f, 0));
+
+            GameObject PotatoR =
+                Instantiate(PlayerData.Instance.PlayerBolt[PlayerData.Instance.PlayerSkill[3] - 1], AttackPoint.position, transform.rotation);
+            PotatoR.transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 45f, 0));
+        }
+    }
+    void MultiShot()
+    {
+        //Instantiate(PlayerBolt, AttackPoint.position, transform.rotation);
+
+        // 플레이어스킬 리스트에서 2번값이 true(1)이면 Bolt[1] = 감자2개 , false(0)이면 Bolt[0] = 감자1개 
+        Instantiate(PlayerData.Instance.PlayerBolt[PlayerData.Instance.PlayerSkill[2]], AttackPoint.position, transform.rotation);
+
+        if (PlayerData.Instance.PlayerSkill[3] > 0) // 사선화살 스킬이 활성화된(0이 아닌 1이된) 상태일 때
+        {
+            GameObject PotatoL =
+                Instantiate(PlayerData.Instance.PlayerBolt[PlayerData.Instance.PlayerSkill[3] - 1], AttackPoint.position, transform.rotation);
+            PotatoL.transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, -45f, 0));
+
+            GameObject PotatoR =
+                Instantiate(PlayerData.Instance.PlayerBolt[PlayerData.Instance.PlayerSkill[3] - 1], AttackPoint.position, transform.rotation);
+            PotatoR.transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 45f, 0));
+        }
     }
 
     void SetTarget()
